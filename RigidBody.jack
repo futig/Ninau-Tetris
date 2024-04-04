@@ -1,17 +1,17 @@
 class RigidBody{
     field int x, y;
-    field int Hight, Width;
+    field int height, width;
 
-    constructor RigidBody new(int Ax, int Ay, int AWidth, int AHight){
-        let x = Ax;
-        let y = Ay;
-        let Width = AWidth;
-        let Hight = AHight;
+    constructor RigidBody new(int newX, int newY, int newWidth, int newHeight){
+        let x = newX;
+        let y = newY;
+        let width = newWidth;
+        let height = newHeight;
         return this;
     }
 
     method void moveRight(){
-        if(x + Width < 512){
+        if(x + width < 510){
             let x = x + 2;
         }
         return;
@@ -25,7 +25,7 @@ class RigidBody{
     }
 
     method void moveDown(){
-        if (y + Hight + 2 < 240){
+        if (y + Hight < 254){
             let y = y + 2;
         }
         return;
@@ -40,7 +40,7 @@ class RigidBody{
     }
 
     method void getTopRightX(){
-        return x;
+        return x + width;
     }
 
     method void getTopRightY(){
@@ -52,23 +52,23 @@ class RigidBody{
     }
 
     method void getBottomLeftY(){
-        return y;
+        return y + height;
     }
 
     method void getBottomRightX(){
-        return x;
+        return x + width;
     }
 
     method void getBottomRightY(){
-        return y;
+        return y + height;
     }
 
     method void getWidth(){
-        return Width;
+        return width;
     }
 
     method void getHight(){
-        return Hight;
+        return height;
     }
 
     method void dispose(){

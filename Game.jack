@@ -44,8 +44,8 @@ class Game {
             let key = Keyboard.keyPressed();
             let i = 0;
             if (key == 81) { let exit = true; } // q key
-            else if (key == 130) { player.moveLeft(); } 
-            else if (key == 132) { player.moveRight(); }
+            else if (key == 130) { player.move(0); } 
+            else if (key == 132) { player.move(1); }
             while (i < itemsAmount & ~(exit)) {
                 let disposeItem = false;
                 if (fallingObjects[i] == null){

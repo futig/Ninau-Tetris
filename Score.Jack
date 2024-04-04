@@ -12,10 +12,6 @@ class Score{
         return this;
     }
 
-    method bool isScoreOverflow(){
-        return hasMaxScore;
-    }
-
     method void initializeDigitsTable(){
         var int i;
         let digits = Array.new(4);
@@ -51,7 +47,7 @@ class Score{
         }
         if (integerPart > 0){
             hasMaxScore = true;
-        }drawScore
+        }
         do drawDigits();
         return;
     }
@@ -61,35 +57,36 @@ class Score{
         let i = 0;
         while i < 4 {
             do ClearScreenArea.ClearScreenArea(digitsRigidBodies[i]);
+            let location = Location.getDrawingLocation(digitsRigidBodies[i]);
             if (digits[i] == 0){
-                do Sprite.drawDigitZero(digitsRigidBodies[i])
+                do Sprite.drawDigitZero(location)
             }
             else if (digits[i] == 1){
-                do Sprite.drawDigitOne(digitsRigidBodies[i])
+                do Sprite.drawDigitOne(location)
             }
             else if (digits[i] == 2){
-                do Sprite.drawDigitTwo(digitsRigidBodies[i])
+                do Sprite.drawDigitTwo(location)
             }
             else if (digits[i] == 3){
-                do Sprite.drawDigitThree(digitsRigidBodies[i])
+                do Sprite.drawDigitThree(location)
             }
             else if (digits[i] == 4){
-                do Sprite.drawDigitFour(digitsRigidBodies[i])
+                do Sprite.drawDigitFour(location)
             }
             else if (digits[i] == 5){
-                do Sprite.drawDigitFive(digitsRigidBodies[i])
+                do Sprite.drawDigitFive(location)
             }
             else if (digits[i] == 6){
-                do Sprite.drawDigitSix(digitsRigidBodies[i])
+                do Sprite.drawDigitSix(location)
             }
             else if (digits[i] == 7){
-                do Sprite.drawDigitSeven(digitsRigidBodies[i])
+                do Sprite.drawDigitSeven(location)
             }
             else if (digits[i] == 8){
-                do Sprite.drawDigitEight(digitsRigidBodies[i])
+                do Sprite.drawDigitEight(location)
             }
             else if (digits[i] == 9){
-                do Sprite.drawDigitNine(digitsRigidBodies[i])
+                do Sprite.drawDigitNine(location)
             }
         }
         return;

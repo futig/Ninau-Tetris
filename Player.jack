@@ -15,23 +15,23 @@ class Player {
 
     method void draw(){
         do ClearScreenArea.ClearScreenArea(rigidBody);
-        do Screen.setColor(true);
-        do Sprites.drowPlayer(rigidBody.getTopLeftX, rigidBody.getTopLeftY);
+        let location = Location.getDrawingLocation(rigidBody);
+        do Sprites.drowPlayer(location);
         return;
     }
-
-    method void moveRight(){
+    
+    // 1 - Right, 0 - left
+    method void move(int direction){ 
         do ClearScreenArea.ClearScreenArea(rigidBody);
-        do RigidBody.moveRight();
-        do Screen.setColor(true);
-        do Sprites.Player);
-    }
-
-    method void moveLeft(){
-        do ClearScreenArea.ClearScreenArea(rigidBody);
-        do RigidBody.moveLeft();
-        do Screen.setColor(true);
-        do Sprites.Player();
+        if (direction == 1){
+            do RigidBody.moveRight();
+        }
+        else if (direction == 0){
+            do RigidBody.moveLeft();
+        }
+        let location = Location.getDrawingLocation(rigidBody);
+        do Sprites.drowPlayer(location);
+        return;
     }
 
     method void getRigidBody(){

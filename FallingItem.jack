@@ -14,9 +14,10 @@ class FallingItem {
     }
 
     method void draw(){
+        var int location;
         do ClearScreenArea.ClearScreenArea(rigidBody);
-        do Screen.setColor(true);
-        do Sprites.drowItem(rigidBody.getTopLeftX, rigidBody.getTopLeftY);
+        let location = Location.getDrawingLocation(rigidBody);
+        do Sprites.drawFallingItem(location);
         return;
     }
 
@@ -27,8 +28,7 @@ class FallingItem {
     method void moveDown(){
         do ClearScreenArea.ClearScreenArea(rigidBody);
         do RigidBody.moveDown();
-        do Screen.setColor(true);
-        do Sprites.Item();
+        do Sprites.drawFallingItem();
         return;
     }
 
