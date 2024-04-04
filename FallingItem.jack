@@ -29,5 +29,11 @@ class FallingItem {
         do RigidBody.moveDown();
         do Screen.setColor(true);
         do Sprites.Item();
+        return;
+    }
+
+    method void clear(){
+        do ClearScreenArea.ClearScreenArea(rigidBody);
+        return;
     }
 }
