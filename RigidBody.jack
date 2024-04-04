@@ -1,0 +1,78 @@
+class RigidBody{
+    field int x, y;
+    field int Hight, Width;
+
+    constructor RigidBody new(int Ax, int Ay, int AWidth, int AHight){
+        let x = Ax;
+        let y = Ay;
+        let Width = AWidth;
+        let Hight = AHight;
+        return this;
+    }
+
+    method void moveRight(){
+        if(x + Width < 512){
+            let x = x + 2;
+        }
+        return;
+    }
+
+    method void moveLeft(){
+        if(x > 1){
+            let x = x - 2;
+        }
+        return;
+    }
+
+    method void moveDown(){
+        if (y + Hight + 2 < 240){
+            let y = y + 2;
+        }
+        return;
+    }
+
+    method void getTopLeftX(){
+        return x;
+    }
+
+    method void getTopLeftY(){
+        return y;
+    }
+
+    method void getTopRightX(){
+        return x;
+    }
+
+    method void getTopRightY(){
+        return y;
+    }
+
+    method void getBottomLeftX(){
+        return x;
+    }
+
+    method void getBottomLeftY(){
+        return y;
+    }
+
+    method void getBottomRightX(){
+        return x;
+    }
+
+    method void getBottomRightY(){
+        return y;
+    }
+
+    method void getWidth(){
+        return Width;
+    }
+
+    method void getHight(){
+        return Hight;
+    }
+
+    method void dispose(){
+        do.Memory.deAlloc(this);
+        return;
+    }
+}
