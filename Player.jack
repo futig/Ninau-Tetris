@@ -20,6 +20,20 @@ class Player {
         return;
     }
 
+    method void moveRight(){
+        do ClearScreenArea.ClearScreenArea(rigidBody);
+        do RigidBody.moveRight();
+        do Screen.setColor(true);
+        do Sprites.Player);
+    }
+
+    method void moveLeft(){
+        do ClearScreenArea.ClearScreenArea(rigidBody);
+        do RigidBody.moveLeft();
+        do Screen.setColor(true);
+        do Sprites.Player();
+    }
+
     method void getRigidBody(){
         return rigidBody;
     }

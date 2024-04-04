@@ -26,7 +26,7 @@ class FallingItem {
 
     method void moveDown(){
         do ClearScreenArea.ClearScreenArea(rigidBody);
-        do RigetBody.moveDown();
+        do RigidBody.moveDown();
         do Screen.setColor(true);
         do Sprites.Item();
     }
