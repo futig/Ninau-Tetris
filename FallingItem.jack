@@ -1,0 +1,32 @@
+class FallingItem {
+    field RigetBody rigidBody;
+
+    constructor FallingItem new(int Ax, int Ay, int AWidth, int AHight){
+        let rigidBody = RigidBody.new(AX, Ay, AWidth, AHight);
+        do draw();
+        return this;
+    }
+
+    method void dispose(){
+        do.Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw(){
+        do ClearScreenArea.ClearScreenArea(rigidBody);
+        do Screen.setColor(true);
+        do Sprites.drowItem(rigidBody.getTopLeftX, rigidBody.getTopLeftY);
+        return;
+    }
+
+    method void getRigidBody(){
+        return rigidBody;
+    }
+
+    method void moveDown(){
+        do ClearScreenArea.ClearScreenArea(rigidBody);
+        do RigetBody.moveDown();
+        do Screen.setColor(true);
+        do Sprites.Item();
+    }
+}

@@ -1,0 +1,25 @@
+class Player {
+    field RigetBody rigidBody;
+
+    constructor Player new(){
+        let rigidBody = RigidBody.new(248, 191, 16, 32);
+        do.draw();
+        return this;
+    }
+
+    method void dispose(){
+        do.Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw(){
+        do ClearScreenArea.ClearScreenArea(rigidBody);
+        do Screen.setColor(true);
+        do Sprites.drowPlayer(rigidBody.getTopLeftX, rigidBody.getTopLeftY);
+        return;
+    }
+
+    method void getRigidBody(){
+        return rigidBody;
+    }
+}
