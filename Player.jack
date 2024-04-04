@@ -8,6 +8,7 @@ class Player {
     }
 
     method void dispose(){
+        do rigidBody.dispose();
         do.Memory.deAlloc(this);
         return;
     }

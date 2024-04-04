@@ -8,6 +8,7 @@ class FallingItem {
     }
 
     method void dispose(){
+        do rigidBody.dispose();
         do.Memory.deAlloc(this);
         return;
     }
