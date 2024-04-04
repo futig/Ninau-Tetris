@@ -1,0 +1,92 @@
+class Game {
+    field Array fallingObjects;
+    field Player player;
+    field Score score;
+    field Health health;
+    field int itemsAmount;
+    field Random random;
+
+    constructor Game new(int itemsOnMap) {
+        do Screen.clearScreen();
+        let random = Random.new()
+        let itemsAmount = itemsOnMap;
+        let player = Player.new()
+        let score = Score.new();
+        let health = Health.new();
+        do initializeFallingItemsArray();
+        do Screen.setColor(true);
+        do Screen.drawRectangle(0, 223, 512, 223);
+        return this;
+    }
+
+    method void initializeFallingItemsArray(){
+        var int i;
+        let fallingObjects = Array.new(itemsAmount);
+        let i = 0;
+        while (i < itemsAmount){
+            let fallingObjects[i] = null;
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void run(){
+        var bool addNewItem;
+        var bool exit;
+        var char key;
+        var int rnd;
+        var bool disposeItem;
+        var RigidBody rb;
+        var int i;
+        let exit = false;
+        while (~exit) {
+            let addNewItem = true;      
+            let key = Keyboard.keyPressed();
+            let i = 0;
+            if (key == 81) { let exit = true; } // q key
+            else if (key == 130) { player.moveLeft(); } 
+            else if (key == 132) { player.moveRight(); }
+            while (i < itemsAmount & ~(exit)) {
+                let disposeItem = false;
+                if (fallingObjects[i] == null){
+                    let rnd = random.next(495);
+                    let fallingObjects[i] = FallingItem.new(rnd, 0, 16, 16);
+                    let addNewItem = false;
+                }
+                else {
+                    let rb = fallingObjects[i].getRigidBody();
+                    let rb = RigidBody.new(rb.getTopLeftX(), rb.getTopLeftY() + 2, 16, 16)
+                    if (ObjectsOverlap.areOverlapping(rb, player.getRigidBody())) {
+                        let disposeItem = true;
+                        do score.addPoint(5);
+                    }
+                    else if (rb.getTopLeftY() + 16 <= 223){
+                        let disposeItem = true;
+                        do health.takeDamage();
+                    }
+                    else {
+                        fallingObjects[i].moveDown()
+                    }
+                    if (disposeItem) {
+                        do fallingObjects[i].clear();
+                        do fallingObjects[i].dispose();
+                        let fallingObjects[i] = null;
+                    }
+                }
+                i = i + 1;
+            }
+            let exit = exit | health.isGameOver();
+        }
+    }
+    
+    method void dispose() {
+        do player.dispose();
+        do score.dispose();
+        do health.dispose();
+        while (i < itemsAmount) {
+            do fallingObjects[i].dispose();
+        }
+        do Memmory.deAlloc(this);
+        return;
+    }
+} 

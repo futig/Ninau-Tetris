@@ -1,0 +1,56 @@
+class FallingItemsList{
+
+    field FallingItem item;
+    field List next;
+
+    constructor List new(FallingItem newItem, List list) {
+        let item = newItem;
+        let next = list;
+        return this;
+    }
+
+    method int getItem() {
+        return item;
+    }
+
+    method int getNext() {
+        return next;
+    }
+
+    method int setNext(List list) {
+        let next = list;
+    }
+
+    method int count() {
+        var List curent;
+        var int count;
+        let curent = this;
+        let count = 0;
+        while (~(curent == null)) {
+            count = count + 1;
+            curent = curent.getNext();
+        }
+        return count;
+    }
+
+    method FallingItem getByIndex(int index) {
+        var List curent;
+        var int count;
+        let curent = this;
+        let count = 0;
+        while (~(curent == null)) {
+            if (index == count)
+                return curent.getItem();
+            count = count + 1;
+            curent = curent.getNext();
+        }
+        do Sys.error(100);
+    }
+
+    method void dispose() {
+        if (~(next == null)) {
+            do next.dispose();
+        }
+        do Memmory.deAlloc(this);
+    }
+}

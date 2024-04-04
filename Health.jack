@@ -1,0 +1,50 @@
+class Health {
+    field int heartsCount;
+    field Array heartsRigidBodies;
+
+    constructor Health new(){
+        let health = 3;
+        do Sprite.drawHealthText(4, 228);
+        do initializeHeartsRigidBodies();
+        do drawHearts();
+        return this;
+    }
+
+    method bool isGameOver {
+        return heartsCount == 0;
+    }
+
+    method void initializeHeartsRigidBodies(){
+        let heartsRigidBodies = Array.new(3);
+        let heartsRigidBodies[0] = RigidBody.new(76, 228, 24, 24);
+        let heartsRigidBodies[1] = RigidBody.new(100, 228, 24, 24);
+        let heartsRigidBodies[2] = RigidBody.new(124, 228, 24, 24);
+        return;
+    }
+
+    method void drawHeart() {
+        var int i;
+        let i = 0;
+        while (i < heartsCount) {
+            do ClearScreenArea.ClearScreenArea(heartsRigidBodies[i]);
+            do Sprite.drawHeart(heartsRigidBodies[i]);
+        }
+        return;
+    }
+
+    method void takeDamage() {
+        let heartsCount = heartsCount - 1;
+        do drawHearts();
+        return;
+    }
+
+    method void dispose() {
+        var int i;
+        let i = 0;
+        while (i < 3) {
+            do heartsRigidBodies[i].dispose();
+        }
+        do Memmory.deAlloc(this);
+        return;
+    }
+}

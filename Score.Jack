@@ -1,0 +1,107 @@
+class Score{
+    field Array digits;
+    field Array digitsRigidBodies;
+    field bool hasMaxScore;
+
+    constructor Score new(){
+        let hasMaxScore = false;
+        do initializeDigitsTable();
+        do initializeDigitsRigidBodies();
+        do Sprite.drawScoreText(364, 228);
+        do drawDigits();
+        return this;
+    }
+
+    method bool isScoreOverflow(){
+        return hasMaxScore;
+    }
+
+    method void initializeDigitsTable(){
+        var int i;
+        let digits = Array.new(4);
+        let i = 0;
+        while (i < 4){
+            let digits[i] = 0;
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void initializeDigitsRigidBodies(){
+        let digitsRigidBodies = Array.new(4);
+        let digitsRigidBodies[0] = RigidBody.new(412, 228, 24, 24);
+        let digitsRigidBodies[1] = RigidBody.new(436, 228, 24, 24);
+        let digitsRigidBodies[2] = RigidBody.new(460, 228, 24, 24);
+        let digitsRigidBodies[3] = RigidBody.new(484, 228, 24, 24);
+        return;
+    }
+
+    method void addPoints(int points){
+        if (hasMaxScore){
+            return;
+        }
+        var int integerPart;
+        var int sum;
+        let sum = 0;
+        let integerPart = points;
+        while (i < lenght) {
+            let sum = digits[i] + integerPart;
+            let integerPart = Math.divide(sum, 10)
+            table[i] = sum - Math.multiply(integerPart, 10)
+        }
+        if (integerPart > 0){
+            hasMaxScore = true;
+        }drawScore
+        do drawDigits();
+        return;
+    }
+
+    method void drawDigits(){
+        var int i;
+        let i = 0;
+        while i < 4 {
+            do ClearScreenArea.ClearScreenArea(digitsRigidBodies[i]);
+            if (digits[i] == 0){
+                do Sprite.drawDigitZero(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 1){
+                do Sprite.drawDigitOne(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 2){
+                do Sprite.drawDigitTwo(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 3){
+                do Sprite.drawDigitThree(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 4){
+                do Sprite.drawDigitFour(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 5){
+                do Sprite.drawDigitFive(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 6){
+                do Sprite.drawDigitSix(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 7){
+                do Sprite.drawDigitSeven(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 8){
+                do Sprite.drawDigitEight(digitsRigidBodies[i])
+            }
+            else if (digits[i] == 9){
+                do Sprite.drawDigitNine(digitsRigidBodies[i])
+            }
+        }
+        return;
+    }
+
+    method void dispose() {
+        var int i;
+        let i = 0;
+        while (i < 4) {
+            do digitsRigidBodies[i].dispose()
+        }
+        do Memmory.deAlloc(this);
+        return;
+    }
+}
