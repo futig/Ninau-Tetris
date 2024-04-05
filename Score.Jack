@@ -1,4 +1,4 @@
-class Score{
+class Score {
     field Array digits;
     field Array digitsRigidBodies;
     field bool hasMaxScore;
