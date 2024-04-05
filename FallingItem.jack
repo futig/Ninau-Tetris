@@ -29,7 +29,7 @@ class FallingItem {
         var int location;
         do ClearScreenArea.ClearScreenArea(rigidBody);
         do rigidBody.moveDown();
-        let location = Location.getDrawingLocation(rigidBody)
+        let location = Location.getDrawingLocation(rigidBody);
         do Sprites.drawFallingItem(location);
         return;
     }

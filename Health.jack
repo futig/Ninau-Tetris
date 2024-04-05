@@ -42,11 +42,14 @@ class Health {
 
     method void dispose() {
         var int i;
+        var RigetBody rb;
         let i = 0;
         while (i < 3) {
-            do heartsRigidBodies[i].dispose();
+            let rb = heartsRigidBodies[i];
+            do rb.dispose();
             let i = i + 1;
         }
+        do heartsRigidBodies.dispose();
         do Memmory.deAlloc(this);
         return;
     }

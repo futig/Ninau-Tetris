@@ -32,7 +32,7 @@ class Player {
             do rigidBody.moveLeft();
         }
         let location = Location.getDrawingLocation(rigidBody);
-        do Sprites.drowPlayer(location);
+        do Sprites.drawPlayer(location);
         return;
     }
 

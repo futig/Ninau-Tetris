@@ -1,10 +1,10 @@
 class ObjectsOverlap{
     function bool areOverlaping (RigidBody first, RigidBody second) {
-        if (first.getTopLeftX <= second.getTopLeftX & first.getTopRightX >= second.getTopLeftX & first.getTopLeftY >= second.getBottomLeftY) {
+        if (first.getTopLeftX() <= second.getTopLeftX() & first.getTopRightX() >= second.getTopLeftX() & first.getTopLeftY() >= second.getBottomLeftY()) {
             return true;
         }
 
-        if (first.getTopLeftX <= second.getTopRightX & first.getTopRightX >= second.getTopRightX & first.getTopLeftY >= second.getBottomLeftY) {
+        if (first.getTopLeftX() <= second.getTopRightX() & first.getTopRightX() >= second.getTopRightX() & first.getTopLeftY() >= second.getBottomLeftY()) {
             return true;
         }
 

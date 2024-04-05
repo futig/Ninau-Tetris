@@ -1,7 +1,8 @@
 class ClearScreenArea{
+    
     function void ClearScreenArea(RigidBody a){
             do Screen.setColor(false);
-            do Screen.drawRectangle(a.getTopLeftX, a.getTopLeftY, a.getBottomRightX, a.getBottomRightY);
+            do Screen.drawRectangle(a.getTopLeftX(), a.getTopLeftY(), a.getBottomRightX(), a.getBottomRightY());
             do Screen.setColor(true);
             return;
     }

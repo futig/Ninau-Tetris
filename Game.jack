@@ -37,21 +37,13 @@ class Game {
         var bool disposeItem;
         var RigidBody rb;
         var int i;
+        var FallingItem fallinItem;
         let exit = false;
         while (~exit) {
             let addNewItem = true;      
             let key = Keyboard.keyPressed();
+            let exit = processInput(key);
             let i = 0;
-
-            if (key = 81) { // q key
-                let exit = true; 
-            } 
-            if (key = 130) { 
-                do player.move(0); 
-            } 
-            if (key = 132) { 
-                do player.move(1); 
-            }
 
             while (i < itemsAmount & ~(exit)) {
                 let disposeItem = false;
@@ -61,23 +53,24 @@ class Game {
                     let addNewItem = false;
                 }
                 else {
-                    let rb = fallingObjects[i].getRigidBody();
+                    let fallinItem = fallingObjects[i];
+                    let rb = fallinItem.getRigidBody();
                     let rb = RigidBody.new(rb.getTopLeftX(), rb.getTopLeftY() + 2, 16, 16);
                     let overlap = ObjectsOverlap.areOverlapping(rb, player.getRigidBody());
                     if (overlap) {
                         let disposeItem = true;
                         do score.addPoint(5);
                     }
-                    if (rb.getTopLeftY() + 16 <= 223) {
+                    if (rb.getTopLeftY() + 16 < 224) {
                         let disposeItem = true;
                         do health.takeDamage();
                     }
                     if (rb.getTopLeftY() + 16 > 223 & ~(overlap)) {
-                        do fallingObjects[i].moveDown();
+                        do fallinItem.moveDown();
                     }
                     if (disposeItem) {
-                        do fallingObjects[i].clear();
-                        do fallingObjects[i].dispose();
+                        do fallinItem.clear();
+                        do fallinItem.dispose();
                         let fallingObjects[i] = null;
                     }
                 }
@@ -85,18 +78,36 @@ class Game {
             }
             let exit = exit | health.isGameOver();
         }
+        return;
+    }
+
+    // returns true if need to exit
+    method bool processInput(int key) {
+        if (key = 81) { // q key
+            return true; 
+        } 
+        if (key = 130) { 
+            do player.move(0); 
+        } 
+        if (key = 132) { 
+            do player.move(1); 
+        }
+        return false;
     }
     
     method void dispose() {
         var int i;
+        var FallingItem fallinItem;
         let i = 0;
         do player.dispose();
         do score.dispose();
         do health.dispose();
         while (i < itemsAmount) {
-            do fallingObjects[i].dispose();
+            let fallinItem = fallingObjects[i];
+            do fallinItem.dispose();
             let i = i + 1;
         }
+        do fallingObjects.dispose();
         do Memmory.deAlloc(this);
         return;
     }

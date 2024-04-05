@@ -2,7 +2,7 @@ class RigidBody{
     field int x, y;
     field int height, width;
 
-    constructor RigidBody new(int newX, int newY, int newWidth, int newHeight){
+    constructor RigidBody new(int newX, int newY, int newWidth, int newHeight) {
         let x = newX;
         let y = newY;
         let width = newWidth;
@@ -10,68 +10,68 @@ class RigidBody{
         return this;
     }
 
-    method void moveRight(){
+    method void moveRight() {
         if(x + width < 510){
             let x = x + 2;
         }
         return;
     }
 
-    method void moveLeft(){
+    method void moveLeft() {
         if(x > 1){
             let x = x - 2;
         }
         return;
     }
 
-    method void moveDown(){
+    method void moveDown() {
         if (y + height < 254){
             let y = y + 2;
         }
         return;
     }
 
-    method int getTopLeftX(){
+    method int getTopLeftX() {
         return x;
     }
 
-    method int getTopLeftY(){
+    method int getTopLeftY() {
         return y;
     }
 
-    method int getTopRightX(){
+    method int getTopRightX() {
         return x + width;
     }
 
-    method int getTopRightY(){
+    method int getTopRightY() {
         return y;
     }
 
-    method int getBottomLeftX(){
+    method int getBottomLeftX() {
         return x;
     }
 
-    method int getBottomLeftY(){
+    method int getBottomLeftY() {
         return y + height;
     }
 
-    method int getBottomRightX(){
+    method int getBottomRightX() {
         return x + width;
     }
 
-    method int getBottomRightY(){
+    method int getBottomRightY() {
         return y + height;
     }
 
-    method int getWidth(){
+    method int getWidth() {
         return width;
     }
 
-    method int getHight(){
+    method int getHight() {
         return height;
     }
 
-    method void dispose(){
+    method void dispose() {
         do Memory.deAlloc(this);
         return;
     }
