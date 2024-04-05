@@ -59,7 +59,7 @@ class Game {
                     let overlap = ObjectsOverlap.areOverlapping(rb, player.getRigidBody());
                     if (overlap) {
                         let disposeItem = true;
-                        do score.addPoint(5);
+                        do score.addPoints(5);
                     }
                     if (rb.getTopLeftY() + 16 < 224) {
                         let disposeItem = true;
