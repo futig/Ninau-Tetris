@@ -2,20 +2,10 @@ class Main {
 
     function void Main () {
         var Geme game;
-        var char key;
 
-
-        while (true) {
-            let key = 0;
-
-            let game = Game.new(20);
-            do game.run();
-            do game.dispose();
-
-            while (~(key = 128)) {
-                let key = Keyboard.keyPressed();
-            }
-        }
+        let game = Game.new(20);
+        do game.run();
+        do game.dispose();
 
         return;
     }
