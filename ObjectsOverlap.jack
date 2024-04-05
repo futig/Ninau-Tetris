@@ -1,13 +1,28 @@
 class ObjectsOverlap{
-    function bool areOverlaping (RigidBody first, RigidBody second) {
-        if (first.getTopLeftX() <= second.getTopLeftX() & first.getTopRightX() >= second.getTopLeftX() & first.getTopLeftY() >= second.getBottomLeftY()) {
+
+    function bool areOverlapping (RigidBody first, RigidBody second) {
+        if(ObjectsOverlap.lessEqually(first.getTopLeftX(), second.getTopLeftX()) & ObjectsOverlap.moreEqually(first.getTopRightX(), second.getTopLeftX()) & ObjectsOverlap.moreEqually(first.getTopLeftY(), second.getBottomLeftY())){
             return true;
         }
 
-        if (first.getTopLeftX() <= second.getTopRightX() & first.getTopRightX() >= second.getTopRightX() & first.getTopLeftY() >= second.getBottomLeftY()) {
+        if(ObjectsOverlap.lessEqually(first.getTopLeftX(), second.getTopRightX()) & ObjectsOverlap.moreEqually(first.getTopRightX(), second.getTopRightX()) & ObjectsOverlap.moreEqually(first.getTopLeftY(), second.getBottomLeftY())){
             return true;
         }
 
+        return false;
+    }
+
+    function bool lessEqually(int first, int second) {
+        if(first < second | first = second){
+            return true;
+        }
+        return false;
+    }
+
+    function bool moreEqually(int first, int second) {
+        if(first > second | first = second){
+            return true;
+        }
         return false;
     }
 }
