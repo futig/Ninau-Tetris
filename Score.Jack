@@ -7,7 +7,7 @@ class Score {
         let hasMaxScore = false;
         do initializeDigitsTable();
         do initializeDigitsRigidBodies();
-        do Sprites.drawScoreText(364, 228);
+        do Sprites.drawScoreText(117100); // x = 364, y = 228
         do drawDigits();
         return this;
     }

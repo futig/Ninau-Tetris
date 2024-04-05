@@ -1,5 +1,5 @@
 class Location {
     function int getDrawingLocation (RigidBody rb) {
-        return rb.getTopLeftY() * 32 + rb.getTopLeftX();
+        return rb.getTopLeftY() * 512 + rb.getTopLeftX();
     }
 }

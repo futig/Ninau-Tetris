@@ -81,7 +81,7 @@ class Sprites {
 		return;
 	}
 
-	function void drawLives(int location) {
+	function void drawLivesText(int location) {
 		var int memAddress; 
 		let memAddress = 16384+location;
 		// column 0
