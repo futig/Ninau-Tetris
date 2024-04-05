@@ -10,8 +10,8 @@ class Health {
         return this;
     }
 
-    method bool isGameOver {
-        return heartsCount == 0;
+    method bool isGameOver() {
+        return heartsCount = 0;
     }
 
     method void initializeHeartsRigidBodies(){
@@ -23,6 +23,7 @@ class Health {
     }
 
     method void drawHearts() {
+        var int location;
         var int i;
         let i = 0;
         while (i < heartsCount) {
@@ -44,6 +45,7 @@ class Health {
         let i = 0;
         while (i < 3) {
             do heartsRigidBodies[i].dispose();
+            let i = i + 1;
         }
         do Memmory.deAlloc(this);
         return;

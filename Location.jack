@@ -1,6 +1,5 @@
 class Location {
-    function void getDrawingLocation (int x, int y) {
-        let location = y * 32 + x;
-        return location;
+    function int getDrawingLocation (RigidBody rb) {
+        return rb.getTopLeftY() * 32 + x;
     }
 }

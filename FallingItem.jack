@@ -1,15 +1,15 @@
 class FallingItem {
     field RigetBody rigidBody;
 
-    constructor FallingItem new(int Ax, int Ay, int AWidth, int AHight){
-        let rigidBody = RigidBody.new(AX, Ay, AWidth, AHight);
+    constructor FallingItem new(int x, int y, int width, int height){
+        let rigidBody = RigidBody.new(x, y, width, height);
         do draw();
         return this;
     }
 
     method void dispose(){
         do rigidBody.dispose();
-        do.Memory.deAlloc(this);
+        do Memory.deAlloc(this);
         return;
     }
 
@@ -21,14 +21,16 @@ class FallingItem {
         return;
     }
 
-    method void getRigidBody(){
+    method RigidBody getRigidBody(){
         return rigidBody;
     }
 
     method void moveDown(){
+        var int location;
         do ClearScreenArea.ClearScreenArea(rigidBody);
-        do RigidBody.moveDown();
-        do Sprites.drawFallingItem();
+        do rigidBody.moveDown();
+        let location = Location.getDrawingLocation(rigidBody)
+        do Sprites.drawFallingItem(location);
         return;
     }
 

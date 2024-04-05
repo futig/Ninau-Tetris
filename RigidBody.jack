@@ -25,54 +25,54 @@ class RigidBody{
     }
 
     method void moveDown(){
-        if (y + Hight < 254){
+        if (y + height < 254){
             let y = y + 2;
         }
         return;
     }
 
-    method void getTopLeftX(){
+    method int getTopLeftX(){
         return x;
     }
 
-    method void getTopLeftY(){
+    method int getTopLeftY(){
         return y;
     }
 
-    method void getTopRightX(){
+    method int getTopRightX(){
         return x + width;
     }
 
-    method void getTopRightY(){
+    method int getTopRightY(){
         return y;
     }
 
-    method void getBottomLeftX(){
+    method int getBottomLeftX(){
         return x;
     }
 
-    method void getBottomLeftY(){
+    method int getBottomLeftY(){
         return y + height;
     }
 
-    method void getBottomRightX(){
+    method int getBottomRightX(){
         return x + width;
     }
 
-    method void getBottomRightY(){
+    method int getBottomRightY(){
         return y + height;
     }
 
-    method void getWidth(){
+    method int getWidth(){
         return width;
     }
 
-    method void getHight(){
+    method int getHight(){
         return height;
     }
 
     method void dispose(){
-        do.Memory.deAlloc(this);
+        do Memory.deAlloc(this);
         return;
     }
 }

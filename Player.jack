@@ -3,38 +3,40 @@ class Player {
 
     constructor Player new(){
         let rigidBody = RigidBody.new(248, 191, 16, 32);
-        do.draw();
+        do draw();
         return this;
     }
 
     method void dispose(){
         do rigidBody.dispose();
-        do.Memory.deAlloc(this);
+        do Memory.deAlloc(this);
         return;
     }
 
     method void draw(){
+        var int location;
         do ClearScreenArea.ClearScreenArea(rigidBody);
         let location = Location.getDrawingLocation(rigidBody);
-        do Sprites.drowPlayer(location);
+        do Sprites.drawPlayer(location);
         return;
     }
     
     // 1 - Right, 0 - left
     method void move(int direction){ 
+        var int location;
         do ClearScreenArea.ClearScreenArea(rigidBody);
-        if (direction == 1){
-            do RigidBody.moveRight();
+        if (direction = 1) { 
+            do rigidBody.moveRight();
         }
-        else if (direction == 0){
-            do RigidBody.moveLeft();
+        if (direction = 0) {
+            do rigidBody.moveLeft();
         }
         let location = Location.getDrawingLocation(rigidBody);
         do Sprites.drowPlayer(location);
         return;
     }
 
-    method void getRigidBody(){
+    method RigetBody getRigidBody() {
         return rigidBody;
     }
 }
