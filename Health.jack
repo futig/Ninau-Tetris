@@ -4,7 +4,7 @@ class Health {
 
     constructor Health new(){
         let heartsCount = 3;
-        do Sprites.drawLivesText(116740); // x = 4, y = 228
+        do Sprites.drawLivesText(7296); // x = 4, y = 228
         do initializeHeartsRigidBodies();
         do drawHearts();
         return this;
@@ -30,6 +30,7 @@ class Health {
             do ClearScreenArea.ClearScreenArea(heartsRigidBodies[i]);
             let location = Location.getDrawingLocation(heartsRigidBodies[i]);
             do Sprites.drawHeart(location);
+            let i = i + 1;
         }
         return;
     }

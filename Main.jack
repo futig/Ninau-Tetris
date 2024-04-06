@@ -1,7 +1,7 @@
 class Main {
 
     function void main () {
-        var Geme game;
+        var Game game;  
 
         let game = Game.new(20);
         do game.run();

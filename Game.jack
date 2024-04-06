@@ -13,7 +13,7 @@ class Game {
         let health = Health.new();
         do initializeFallingItemsArray();
         do Screen.setColor(true);
-        do Screen.drawRectangle(0, 223, 512, 223);
+        do Screen.drawRectangle(0, 223, 511, 224);
         return this;
     }
 

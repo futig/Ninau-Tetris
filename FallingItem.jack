@@ -1,5 +1,5 @@
 class FallingItem {
-    field RigetBody rigidBody;
+    field RigidBody rigidBody;
 
     constructor FallingItem new(int x, int y, int width, int height){
         let rigidBody = RigidBody.new(x, y, width, height);

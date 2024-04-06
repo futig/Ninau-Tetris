@@ -1,8 +1,8 @@
 class Player {
-    field RigetBody rigidBody;
+    field RigidBody rigidBody;
 
     constructor Player new(){
-        let rigidBody = RigidBody.new(248, 191, 16, 32);
+        let rigidBody = RigidBody.new(248, 189, 16, 32);
         do draw();
         return this;
     }
