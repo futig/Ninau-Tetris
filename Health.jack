@@ -4,31 +4,41 @@ class Health {
 
     constructor Health new(){
         let heartsCount = 3;
-        do Sprites.drawLivesText(7296); // x = 4, y = 228
+        do Sprites.drawLivesText(7297); // x = 16, y = 228
         do initializeHeartsRigidBodies();
         do drawHearts();
         return this;
     }
 
     method bool isGameOver() {
-        return heartsCount = 0;
+        if (heartsCount = 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     method void initializeHeartsRigidBodies(){
         let heartsRigidBodies = Array.new(heartsCount);
-        let heartsRigidBodies[0] = RigidBody.new(76, 228, 24, 24);
-        let heartsRigidBodies[1] = RigidBody.new(100, 228, 24, 24);
-        let heartsRigidBodies[2] = RigidBody.new(124, 228, 24, 24);
+        let heartsRigidBodies[0] = RigidBody.new(80, 228, 24, 24);
+        let heartsRigidBodies[1] = RigidBody.new(112, 228, 24, 24);
+        let heartsRigidBodies[2] = RigidBody.new(144, 228, 24, 24);
         return;
     }
 
     method void drawHearts() {
+        var RigidBody rb;
         var int location;
         var int i;
         let i = 0;
+        do Screen.setColor(false);
+        do Screen.drawRectangle(80, 228, 176, 252);
+        do Screen.setColor(true);
+
         while (i < heartsCount) {
-            do ClearScreenArea.ClearScreenArea(heartsRigidBodies[i]);
-            let location = Location.getDrawingLocation(heartsRigidBodies[i]);
+            let rb = heartsRigidBodies[i];
+            let location = Location.getDrawingLocation(rb);
             do Sprites.drawHeart(location);
             let i = i + 1;
         }
@@ -36,7 +46,7 @@ class Health {
     }
 
     method void takeDamage() {
-        let heartsCount = heartsCount - 1;
+        let heartsCount = 2;
         do drawHearts();
         return;
     }

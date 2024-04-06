@@ -11,22 +11,22 @@ class RigidBody{
     }
 
     method void moveRight() {
-        if(x + width < 510){
-            let x = x + 2;
+        if(x + width < 508){
+            let x = x + 4;
         }
         return;
     }
 
     method void moveLeft() {
-        if(x > 1){
-            let x = x - 2;
+        if(x > 3){
+            let x = x - 4;
         }
         return;
     }
 
     method void moveDown() {
-        if (y + height < 254){
-            let y = y + 2;
+        if (y + height < 255){
+            let y = y + 1;
         }
         return;
     }

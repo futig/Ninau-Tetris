@@ -7,7 +7,7 @@ class Score {
         let hasMaxScore = false;
         do initializeDigitsTable();
         do initializeDigitsRigidBodies();
-        do Sprites.drawScoreText(7318); // x = 364, y = 228
+        do Sprites.drawScoreText(7316); // x = 352, y = 228
         do drawDigits();
         return this;
     }
@@ -25,10 +25,10 @@ class Score {
 
     method void initializeDigitsRigidBodies(){
         let digitsRigidBodies = Array.new(4);
-        let digitsRigidBodies[0] = RigidBody.new(412, 228, 24, 24);
-        let digitsRigidBodies[1] = RigidBody.new(436, 228, 24, 24);
-        let digitsRigidBodies[2] = RigidBody.new(460, 228, 24, 24);
-        let digitsRigidBodies[3] = RigidBody.new(484, 228, 24, 24);
+        let digitsRigidBodies[0] = RigidBody.new(384, 228, 24, 24);
+        let digitsRigidBodies[1] = RigidBody.new(416, 228, 24, 24);
+        let digitsRigidBodies[2] = RigidBody.new(448, 228, 24, 24);
+        let digitsRigidBodies[3] = RigidBody.new(480, 228, 24, 24);
         return;
     }
 
@@ -48,6 +48,7 @@ class Score {
             let sum = digit + integerPart;
             let integerPart = sum / 10;
             let digits[i] = -(integerPart * 10) + sum;
+            let i = i + 1;
         }
         if (integerPart > 0){
             let hasMaxScore = true;

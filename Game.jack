@@ -29,54 +29,60 @@ class Game {
     }
 
     method void run() {
-        var bool overlap;
         var bool addNewItem;
         var bool exit;
         var char key;
+        let exit = false;
+        let addNewItem = true; 
+        while (~exit) {
+            let key = Keyboard.keyPressed();
+            let exit = processInput(key);
+            do processFallingItems(addNewItem);
+            if (addNewItem) {
+                let addNewItem = false; 
+            }
+            let exit = exit | health.isGameOver();
+        }
+        return;
+    }
+
+    method void processFallingItems(bool addItem){
+        var bool overlap;
         var int rnd;
-        var bool disposeItem;
         var RigidBody rb;
         var int i;
         var FallingItem fallinItem;
-        let exit = false;
-        while (~exit) {
-            let addNewItem = true;      
-            let key = Keyboard.keyPressed();
-            let exit = processInput(key);
-            let i = 0;
-
-            while (i < itemsAmount & ~(exit)) {
-                let disposeItem = false;
-                if (fallingObjects[i] = null) {
+        var bool disposeItem;
+        let i = 0;
+        while (i < itemsAmount) {
+            let disposeItem = false;
+            if (fallingObjects[i] = null) {
+                if (addItem) {
                     let rnd = Random.next(495);
                     let fallingObjects[i] = FallingItem.new(rnd, 0, 16, 16);
-                    let addNewItem = false;
                 }
-                else {
-                    let fallinItem = fallingObjects[i];
-                    let rb = fallinItem.getRigidBody();
-                    let rb = RigidBody.new(rb.getTopLeftX(), rb.getTopLeftY() + 2, 16, 16);
-                    let overlap = ObjectsOverlap.areOverlapping(rb, player.getRigidBody());
-                    if (overlap) {
-                        let disposeItem = true;
-                        do score.addPoints(5);
-                    }
-                    if (rb.getTopLeftY() + 16 < 224) {
-                        let disposeItem = true;
-                        do health.takeDamage();
-                    }
-                    if (rb.getTopLeftY() + 16 > 223 & ~(overlap)) {
-                        do fallinItem.moveDown();
-                    }
-                    if (disposeItem) {
-                        do fallinItem.clear();
-                        do fallinItem.dispose();
-                        let fallingObjects[i] = null;
-                    }
-                }
-                let i = i + 1;
             }
-            let exit = exit | health.isGameOver();
+            else {
+                let fallinItem = fallingObjects[i];
+                let rb = fallinItem.getRigidBody();
+                let overlap = ObjectsOverlap.areOverlapping(player.getRigidBody(), rb);
+                if (overlap) {
+                    let disposeItem = true;
+                    do score.addPoints(21);
+                }
+                if (rb.getBottomLeftY() + 2 > 222) {
+                    let disposeItem = true;
+                    do health.takeDamage();
+                }
+                if (rb.getBottomLeftY() + 2 < 223 & ~(overlap)) {
+                    do fallinItem.moveDown();
+                }
+                if (disposeItem) {
+                    do fallinItem.dispose();
+                    let fallingObjects[i] = null;
+                }
+            }
+            let i = i + 1;
         }
         return;
     }

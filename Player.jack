@@ -1,23 +1,19 @@
 class Player {
     field RigidBody rigidBody;
 
-    constructor Player new(){
+    constructor Player new() {
+        var int location;
         let rigidBody = RigidBody.new(248, 189, 16, 32);
-        do draw();
+        let location = Location.getDrawingLocation(rigidBody);
+        //do Sprites.drawPlayer(location);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(rigidBody.getTopLeftX(), rigidBody.getTopLeftY(), rigidBody.getBottomRightX(), rigidBody.getBottomRightY());
         return this;
     }
 
     method void dispose(){
         do rigidBody.dispose();
         do Memory.deAlloc(this);
-        return;
-    }
-
-    method void draw(){
-        var int location;
-        do ClearScreenArea.ClearScreenArea(rigidBody);
-        let location = Location.getDrawingLocation(rigidBody);
-        do Sprites.drawPlayer(location);
         return;
     }
     
@@ -32,7 +28,9 @@ class Player {
             do rigidBody.moveLeft();
         }
         let location = Location.getDrawingLocation(rigidBody);
-        do Sprites.drawPlayer(location);
+        //do Sprites.drawPlayer(location);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(rigidBody.getTopLeftX(), rigidBody.getTopLeftY(), rigidBody.getBottomRightX(), rigidBody.getBottomRightY());
         return;
     }
 
