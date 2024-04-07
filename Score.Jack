@@ -98,10 +98,11 @@ class Score {
         while (i < 4) {
             let rb = digitsRigidBodies[i];
             do rb.dispose();
+            let i = i + 1;
         }
         do digits.dispose();
         do digitsRigidBodies.dispose();
-        do Memmory.deAlloc(this);
+        do Memory.deAlloc(this);
         return;
     }
 }

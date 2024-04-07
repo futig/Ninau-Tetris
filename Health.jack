@@ -53,7 +53,7 @@ class Health {
 
     method void dispose() {
         var int i;
-        var RigetBody rb;
+        var RigidBody rb;
         let i = 0;
         while (i < 3) {
             let rb = heartsRigidBodies[i];
@@ -61,7 +61,7 @@ class Health {
             let i = i + 1;
         }
         do heartsRigidBodies.dispose();
-        do Memmory.deAlloc(this);
+        do Memory.deAlloc(this);
         return;
     }
 }

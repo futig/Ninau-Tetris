@@ -1,0 +1,24 @@
+class Random {
+
+    field int seed;
+
+    constructor Random new() {
+        let seed = 2;
+        return this;
+    }
+
+    method void updateSeed(int newSeed) {
+        var int tmp;
+        let tmp = (seed * 3) + newSeed;
+        let seed = tmp - ((tmp / 9999) * 9999);
+        return;
+    }
+
+    method int nextInt(int max) {
+        var int module;
+        var int next;
+        let next = (seed * 3 + 313) & 10101;
+        let module = next - ((next / max) * max);
+        return (module / 16) * 16;
+    }
+}
