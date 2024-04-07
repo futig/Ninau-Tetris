@@ -42,24 +42,30 @@ class Game {
                 let addNewItem = false; 
             }
             let exit = exit | health.isGameOver();
+            do Sys.wait(100);
         }
         return;
     }
 
-    method void processFallingItems(bool addItem){
+    method void processFallingItems() {
+        var bool addNewItem;
         var bool overlap;
         var int rnd;
         var RigidBody rb;
         var int i;
         var FallingItem fallinItem;
         var bool disposeItem;
+        var int next;
+        let addNewItem = true;
+        let next = 0;
         let i = 0;
         while (i < itemsAmount) {
             let disposeItem = false;
             if (fallingObjects[i] = null) {
-                if (addItem) {
-                    let rnd = Random.next(495);
-                    let fallingObjects[i] = FallingItem.new(rnd, 0, 16, 16);
+                if (addNewItem){
+                    let fallingObjects[i] = FallingItem.new(next, 0, 16, 16);
+                    let next = (next + 32) - ((next + 32) / 512 * 512);
+                    let addNewItem = false;
                 }
             }
             else {
@@ -68,7 +74,7 @@ class Game {
                 let overlap = ObjectsOverlap.areOverlapping(player.getRigidBody(), rb);
                 if (overlap) {
                     let disposeItem = true;
-                    do score.addPoints(21);
+                    do score.addPoints(5);
                 }
                 if (rb.getBottomLeftY() + 2 > 222) {
                     let disposeItem = true;

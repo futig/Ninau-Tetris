@@ -46,7 +46,7 @@ class Health {
     }
 
     method void takeDamage() {
-        let heartsCount = 2;
+        let heartsCount = heartsCount - 1;
         do drawHearts();
         return;
     }

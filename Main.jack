@@ -3,7 +3,7 @@ class Main {
     function void main () {
         var Game game;  
 
-        let game = Game.new(20);
+        let game = Game.new(32);
         do game.run();
         do game.dispose();
 
